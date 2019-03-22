@@ -19,6 +19,10 @@ Route::get('/', function () {
 Route::get('/port','Port\PortController@port'); //访问注册页面
 Route::get('/reg','Port\PortController@reg'); //访问注册页面
 Route::post('/reg','Port\PortController@doreg'); //用户注册页面
-Route::get('/login','Port\PortController@login'); //访问登录页面
-Route::post('/login','Port\PortController@dologin'); //登录页面
+Route::get('/login','Port\PortController@login'); //访问登录页面  手机端
+Route::post('/login','Port\PortController@dologin'); //登录页面  手机端
 Route::get('/login1','Port\PortController@dologin'); //登录页面
+
+
+Route::get('/apilogin','Port\PortController@apilogin'); //访问登录页面
+Route::post('/apilogin','Port\PortController@apilogin'); //登录页面
