@@ -72,6 +72,7 @@ class PortController extends Controller
             $token = substr(md5(time().mt_rand(1,99999)),10,10);
             setcookie('uid',$info->uid,time()+86400,'/','hz4155.cn',false,true);
             setcookie('token',$token,time()+86400,'/','hz4155.cn',false,true);
+            var_dump($_COOKIE);die;
             $redis_key="h:u:s".$info->id;
             Redis::set($redis_key,$token);
             Redis::expire($redis_key,86400);
