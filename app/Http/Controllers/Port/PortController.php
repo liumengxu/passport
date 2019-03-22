@@ -77,7 +77,7 @@ class PortController extends Controller
             Redis::expire($redis_key,86400);
             //echo '1';
             echo 'Login successful';
-            header("refresh:0.2;$recurl");
+            header("refresh:1;$recurl");
         }
     }
 
@@ -86,7 +86,6 @@ class PortController extends Controller
         $pwd=$request->input('pwd');
         //var_dump($name);die;
         $recurl=$request->input("recurl") ?? env("SHOP_URL");
-        $recur=urldecode($recurl);
         $where=[
             'name'=>$name
         ];
