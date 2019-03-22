@@ -76,7 +76,7 @@ class PortController extends Controller
                 Redis::expire($redis_key,86400);
                 echo "登录成功";
                 $response=[
-                    "error"=>40003,
+                    "error"=>0,
                     "msg"=>'success',
                     "token"=>$token
                 ];
