@@ -83,12 +83,18 @@ class PortController extends Controller
                 return $response_str;
                 //header("refresh:1,$recurl");
             }else{
-                echo "账号或密码错误";
-                header("refresh:1,/login");
+                $response=[
+                    "msg"=>'fail',
+                ];
+                $response_str=json_encode($response);
+                return $response_str;
             }
         }else{
-            echo "账户不存在";
-            header("refresh:1,/login");
+            $response=[
+                "msg"=>'fail',
+            ];
+            $response_str=json_encode($response);
+            return $response_str;
         }
     }
 }
