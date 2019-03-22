@@ -54,8 +54,34 @@ class PortController extends Controller
         return view("user.login",$data);
     }
 
-
     public function dologin(Request $request){
+        $name =$request->input('uname');
+        $pwd=$request->input('pwd');
+        $recur=$request->input('recurl') ?? env('SHOP_URL');
+        $recurl=urldecode($recur);
+        $data=[
+            'name'=>$name
+        ];
+        $info=UserModel::where($data)->first();
+        $pwd2=password_verify($pwd,$info->pwd);
+        if(empty($info)){
+            echo 'Login failed';
+        }else if($pwd2===false){
+            echo 'Login failed';
+        }else {
+            $token = substr(md5(time().mt_rand(1,99999)),10,10);
+            setcookie('uid',$info->uid,time()+86400,'/','shop.com',false,true);
+            setcookie('token',$token,time()+86400,'/','shop.com',false,true);
+            $redis_key="h:u:s".$info->id;
+            Redis::set($redis_key,$token);
+            Redis::expire($redis_key,86400);
+            //echo '1';
+            echo 'Login successful';
+            header("refresh:0.2;$recurl");
+        }
+    }
+
+    public function apilogin(Request $request){
         $name=$request->input('uname');
         $pwd=$request->input('pwd');
         //var_dump($name);die;
