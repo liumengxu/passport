@@ -107,6 +107,7 @@ class PortController extends Controller
                 ];
                 $response_str=json_encode($response);
                 return $response_str;
+                $recurl=$request->input("recurl") ?? env("SHOP_URL");
                 header("refresh:1,$recurl");
             }else{
                 $response=[
