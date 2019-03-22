@@ -81,7 +81,7 @@ class PortController extends Controller
                 ];
                 $response_str=json_encode($response);
                 return $response_str;
-                //header("refresh:1,$recurl");
+                header("refresh:1,$recurl");
             }else{
                 $response=[
                     "msg"=>'fail',
