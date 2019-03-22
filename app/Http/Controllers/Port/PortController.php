@@ -53,6 +53,8 @@ class PortController extends Controller
         ];
         return view("user.login",$data);
     }
+
+
     public function dologin(Request $request){
         $name=$request->input('uname');
         $pwd=$request->input('pwd');
