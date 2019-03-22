@@ -45,15 +45,15 @@ class PortController extends Controller
             }
         }
     }
-    //登录页面
-    public function login(){
+
+    //手机端登录页面
+    public function alogin(){
         $recurl=$_GET["recurl"] ?? env("SHOP_URL");
         $data=[
             "recurl"=>$recurl
         ];
         return view("user.login",$data);
     }
-
     public function apilogin(Request $request){
         $name =$request->input('uname');
         $pwd=$request->input('pwd');
@@ -81,6 +81,14 @@ class PortController extends Controller
         }
     }
 
+    //登录页面
+    public function login(){
+        $recurl=$_GET["recurl"] ?? env("SHOP_URL");
+        $data=[
+            "recurl"=>$recurl
+        ];
+        return view("user.login",$data);
+    }
     public function dologin(Request $request){
         $name=$request->input('uname');
         $pwd=$request->input('pwd');
