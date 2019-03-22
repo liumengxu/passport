@@ -56,6 +56,7 @@ class PortController extends Controller
     public function dologin(Request $request){
         $name=$request->input('uname');
         $pwd=$request->input('pwd');
+        //var_dump($name);die;
         $recurl=$request->input("recurl") ?? env("SHOP_URL");
         $where=[
             'name'=>$name
@@ -72,7 +73,14 @@ class PortController extends Controller
                 Redis::set($redis_key,$token);
                 Redis::expire($redis_key,86400);
                 echo "登录成功";
-                header("refresh:1,$recurl");
+                $response=[
+                    "error"=>40003,
+                    "msg"=>'success',
+                    "token"=>$token
+                ];
+                $response_str=json_encode($response);
+                return $response_str;
+                //header("refresh:1,$recurl");
             }else{
                 echo "账号或密码错误";
                 header("refresh:1,/login");
