@@ -119,6 +119,8 @@ class PortController extends Controller
                     "email"=>$res["email"]
                 ];
                 $response_str=json_encode($response);
+                var_dump($response_str);
+                var_dump($response);
                 return $response_str;
             }else{
                 $response=[
