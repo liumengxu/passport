@@ -113,14 +113,12 @@ class PortController extends Controller
                 Redis::expire($redis_key,86400);
                 $response=[
                     "error"=>0,
-                    "msg"=>'22222222',
+                    "msg"=>'success',
                     "token"=>$token,
                     "name"=>$res["name"],
                     "email"=>$res["email"]
                 ];
                 $response_str=json_encode($response);
-//                var_dump($response_str);
-//                var_dump($response);
                 return $response_str;
             }else{
                 $response=[
