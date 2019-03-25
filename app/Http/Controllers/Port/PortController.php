@@ -115,8 +115,8 @@ class PortController extends Controller
                     "error"=>0,
                     "msg"=>'success',
                     "token"=>$token,
-                    "name"=>$res["name"],
-                    "email"=>$res["email"]
+//                    "name"=>$res["name"],
+//                    "email"=>$res["email"]
                 ];
                 $response_str=json_encode($response);
                 return $response_str;
