@@ -9,7 +9,7 @@
 </head>
 <body>
 <h4 style="text-align:center">用户登录</h4>
-<form action="login" method="POST" class="form-horizontal">
+<form action="login1" method="POST" class="form-horizontal">
     <input type="hidden" name="recurl" value="{{$recurl}}">
     {{csrf_field()}}
 
