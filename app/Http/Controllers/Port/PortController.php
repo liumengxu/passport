@@ -99,7 +99,7 @@ class PortController extends Controller
         $name=$request->input('uname');
         $pwd=$request->input('pwd');
         //var_dump($name);die;
-        $recurl=$request->input("recurl") ?? env("SHOP_URL");
+//        $recurl=$request->input("recurl") ?? env("SHOP_URL");
         $where=[
             'name'=>$name
         ];
@@ -113,7 +113,7 @@ class PortController extends Controller
                 Redis::expire($redis_key,86400);
                 $response=[
                     "error"=>0,
-                    "msg"=>'success',
+                    "msg"=>'22222222',
                     "token"=>$token,
                     "name"=>$res["name"],
                     "email"=>$res["email"]
