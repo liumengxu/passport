@@ -107,9 +107,6 @@ class PortController extends Controller
         if($res){
             if(password_verify($pwd,$res->pwd)){
                 $token=substr(md5(time().mt_rand(1,9999)),10,10);
-//                setcookie('token',$token,time()+86400,'/','hz4155.cn',false,true);
-//                setcookie('id',$res->id,time()+86400,'/','hz4155.cn',false,true);
-                //var_dump($_COOKIE);die;
                 //存redis
                 $redis_key="h:u:s".$res->id;
                 Redis::set($redis_key,$token);
@@ -117,7 +114,9 @@ class PortController extends Controller
                 $response=[
                     "error"=>0,
                     "msg"=>'success',
-                    "token"=>$token
+                    "token"=>$token,
+                    "name"=>$res["name"],
+                    "email"=>$res["email"]
                 ];
                 $response_str=json_encode($response);
                 return $response_str;
