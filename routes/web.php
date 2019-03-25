@@ -30,6 +30,6 @@ Route::post('/apilogin','Port\PortController@apilogin'); //登录页面
 
 
 //APP端
-Route::get('/login','Port\PortController@login'); //访问登录页面  手机端
-Route::post('/login','Port\PortController@dologin'); //登录页面  手机端
+Route::get('/login1','Port\PortController@login'); //访问登录页面  手机端
+Route::post('/login1','Port\PortController@dologin'); //登录页面  手机端
 Route::post('/appquit','Port\PortController@appquit'); //登录页面  手机端
