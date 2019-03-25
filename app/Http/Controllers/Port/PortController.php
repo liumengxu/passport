@@ -46,7 +46,9 @@ class PortController extends Controller
         }
     }
 
-    //手机端登录页面
+
+    //PC端
+    //电脑端登录页面
     public function alogin(){
         $recurl=$_GET["recurl"] ?? env("SHOP_URL");
         $data=[
@@ -82,7 +84,10 @@ class PortController extends Controller
         }
     }
 
-    //登录页面
+
+
+    //手机端
+    //手机端登录页面
     public function login(){
         $recurl=$_GET["recurl"] ?? env("SHOP_URL");
         $data=[
@@ -102,8 +107,8 @@ class PortController extends Controller
         if($res){
             if(password_verify($pwd,$res->pwd)){
                 $token=substr(md5(time().mt_rand(1,9999)),10,10);
-                setcookie('token',$token,time()+86400,'/','hz4155.cn',false,true);
-                setcookie('id',$res->id,time()+86400,'/','hz4155.cn',false,true);
+//                setcookie('token',$token,time()+86400,'/','hz4155.cn',false,true);
+//                setcookie('id',$res->id,time()+86400,'/','hz4155.cn',false,true);
                 //var_dump($_COOKIE);die;
                 //存redis
                 $redis_key="h:u:s".$res->id;
@@ -116,7 +121,6 @@ class PortController extends Controller
                 ];
                 $response_str=json_encode($response);
                 return $response_str;
-
             }else{
                 $response=[
                     "msg"=>'fail',
@@ -132,6 +136,10 @@ class PortController extends Controller
             return $response_str;
         }
 
+    }
+    public function appquit(){
+        $redis_key="h:u:s";
+        Redis::del($redis_key);
     }
 
 }
