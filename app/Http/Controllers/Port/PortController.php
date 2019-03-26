@@ -99,7 +99,7 @@ class PortController extends Controller
         $name=$request->input('uname');
         $pwd=$request->input('pwd');
         //var_dump($name);die;
-//        $recurl=$request->input("recurl") ?? env("SHOP_URL");
+        $recurl=$request->input("recurl") ?? env("SHOP_URL");
         $where=[
             'name'=>$name
         ];
@@ -115,8 +115,8 @@ class PortController extends Controller
                     "error"=>0,
                     "msg"=>'success',
                     "token"=>$token,
-//                    "name"=>$res["name"],
-//                    "email"=>$res["email"]
+                    "name"=>$res["name"],
+                    "email"=>$res["email"]
                 ];
                 $response_str=json_encode($response);
                 return $response_str;
